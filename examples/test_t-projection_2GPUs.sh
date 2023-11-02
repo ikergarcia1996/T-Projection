@@ -7,17 +7,11 @@
 #SBATCH --error=test_t-projection.err.txt
 
 source /ikerlariak/igarcia945/envs/pytorch2/bin/activate
-cd ..
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export TOKENIZERS_PARALLELISM=true
-export OMP_NUM_THREADS=16
-export PATH="/ikerlariak/igarcia945/pytorch-build/openmpi/bin:$PATH"
-export PATH="/ikerlariak/igarcia945/pytorch-build/openmpi/lib:$PATH"
-export LD_LIBRARY_PATH="/ikerlariak/igarcia945/pytorch-build/openmpi/lib:$LD_LIBRARY_PATH"
-
-
 export TOKENIZERS_PARALLELISM=true
 export TRANSFORMERS_NO_ADVISORY_WARNINGS="true"
 
