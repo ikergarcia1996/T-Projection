@@ -51,5 +51,5 @@ python3 calculate_scores_nmts.py \
 python3 label_projection.py \
   --jsonl_path test_data/mt5-large/es.europarl.jsonl \
   --dictionary_path test_data/mt5-large/es.europarl.json \
-  --output_path test_data/mt5-large/2es.europarl.conll \
+  --output_path test_data/mt5-large/en2es.europarl.conll \
   --gold_tsv test_data/es.europarl.gold
