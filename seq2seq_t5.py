@@ -335,7 +335,9 @@ def main():
         print(f"Preparing for training...")
 
         num_update_steps_per_epoch = math.ceil(
-            len(train_dataloader) / args.gradient_accumulation_steps
+            len(train_dataloader)
+            / args.gradient_accumulation_steps
+            / accelerator.num_processes
         )
 
         max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
