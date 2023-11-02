@@ -24,12 +24,7 @@ from transformers import (
 from utils.utils import get_tags
 
 
-try:
-    import wandb
-
-    wandb.require("service")
-except ImportError:
-    wandb = None
+import wandb
 
 
 def gen_batch(iterable, n=1):
@@ -305,33 +300,6 @@ def main():
         val_dataloader = None
 
     if train_dataloader is not None:
-        wandb.init(
-            project=args.project_name,
-            name=f"{os.path.basename(args.output_dir)}",
-            config={
-                "max_source_length": args.max_source_length,
-                "max_target_length": args.max_source_length,
-                "per_device_eval_batch_size": args.per_device_eval_batch_size,
-                "output_dir": args.output_dir,
-                "num_beams": args.num_beams,
-                "num_return_sequences": args.num_return_sequences,
-                "local_rank": args.local_rank,
-            },
-        )
-
-        wandb.config.model_name_or_path = args.model_name_or_path
-        wandb.config.per_device_train_batch_size = args.per_device_train_batch_size
-        wandb.config.gradient_accumulation_steps = args.gradient_accumulation_steps
-        wandb.config.learning_rate = args.learning_rate
-        wandb.config.weight_decay = args.weight_decay
-        wandb.config.lr_scheduler_type = args.lr_scheduler_type
-        wandb.config.num_warmup_steps = args.num_warmup_steps
-        wandb.config.seed = args.seed
-        wandb.config.eval_every = args.eval_every
-        wandb.config.Mixed_precision = accelerator.mixed_precision
-        wandb.config.Num_GPUs = accelerator.num_processes
-        wandb.config.num_train_epochs = args.num_train_epochs
-
         print(f"Preparing for training...")
 
         num_update_steps_per_epoch = math.ceil(
@@ -348,8 +316,35 @@ def main():
             * args.gradient_accumulation_steps
         )
 
-        wandb.config.total_batch_size = total_batch_size
-        wandb.config.max_train_steps = max_train_steps
+        if accelerator.is_local_main_process:
+            wandb.init(
+                project=args.project_name,
+                name=f"{os.path.basename(args.output_dir)}",
+                config={
+                    "max_source_length": args.max_source_length,
+                    "max_target_length": args.max_source_length,
+                    "per_device_eval_batch_size": args.per_device_eval_batch_size,
+                    "output_dir": args.output_dir,
+                    "num_beams": args.num_beams,
+                    "num_return_sequences": args.num_return_sequences,
+                    "local_rank": args.local_rank,
+                },
+            )
+
+            wandb.config.model_name_or_path = args.model_name_or_path
+            wandb.config.per_device_train_batch_size = args.per_device_train_batch_size
+            wandb.config.gradient_accumulation_steps = args.gradient_accumulation_steps
+            wandb.config.learning_rate = args.learning_rate
+            wandb.config.weight_decay = args.weight_decay
+            wandb.config.lr_scheduler_type = args.lr_scheduler_type
+            wandb.config.num_warmup_steps = args.num_warmup_steps
+            wandb.config.seed = args.seed
+            wandb.config.eval_every = args.eval_every
+            wandb.config.Mixed_precision = accelerator.mixed_precision
+            wandb.config.Num_GPUs = accelerator.num_processes
+            wandb.config.num_train_epochs = args.num_train_epochs
+            wandb.config.total_batch_size = total_batch_size
+            wandb.config.max_train_steps = max_train_steps
 
         no_decay = ["bias", "LayerNorm.weight"]
         optimizer_grouped_parameters = [
@@ -458,29 +453,16 @@ def main():
                 running_loss += loss.item()
                 num_batches += 1
 
-                wandb.log(
-                    {
-                        "Train/Loss": loss.item(),
-                        "Train/epoch": epoch,
-                        "Train/batch": num_batches,
-                    }
-                )
-
-                wandb.log(
-                    {
-                        "Train/Running Loss": loss.item() / num_batches,
-                        "Train/epoch": epoch,
-                        "Train/batch": num_batches,
-                    }
-                )
-
-                wandb.log(
-                    {
-                        "Train/Learning Rate": optimizer.param_groups[0]["lr"],
-                        "Train/epoch": epoch,
-                        "Train/batch": num_batches,
-                    }
-                )
+                if accelerator.is_local_main_process and step % 50 == 0:
+                    wandb.log(
+                        {
+                            "Train/Loss": loss.item(),
+                            "Train/Running Loss": loss.item() / num_batches,
+                            "Train/Learning Rate": optimizer.param_groups[0]["lr"],
+                            "Train/epoch": epoch,
+                            "Train/batch": num_batches,
+                        }
+                    )
 
                 if (
                     step % args.gradient_accumulation_steps == 0
