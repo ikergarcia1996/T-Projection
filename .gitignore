@@ -127,3 +127,16 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+datasets/data
+
+.idea/
+
+datasets/test_data/mt5-large/config.json
+datasets/test_data/mt5-large/generation_config.json
+datasets/test_data/mt5-large/pytorch_model.bin
+datasets/test_data/mt5-large/special_tokens_map.json
+datasets/test_data/mt5-large/spiece.model
+datasets/test_data/mt5-large/tokenizer_config.json
+datasets/test_data/mt5-large/tokenizer.json
+wandb/
