@@ -2,6 +2,7 @@ from datasets import load_dataset
 import os
 import tempfile
 from git import Repo
+import shutil
 
 
 def get_conll():
@@ -85,10 +86,18 @@ def get_europarl():
         Repo.clone_from(
             "https://github.com/ixa-ehu/ner-evaluation-corpus-europarl", tmpdirname
         )
-        os.rename(f"{tmpdirname}/en-europarl.test.conll02", "data/en.europarl.test.tsv")
-        os.rename(f"{tmpdirname}/es-europarl.test.conll02", "data/es.europarl.test.tsv")
-        os.rename(f"{tmpdirname}/de-europarl.test.conll02", "data/de.europarl.test.tsv")
-        os.rename(f"{tmpdirname}/it-europarl.test.conll02", "data/it.europarl.test.tsv")
+        shutil.move(
+            f"{tmpdirname}/en-europarl.test.conll02", "data/en.europarl.test.tsv"
+        )
+        shutil.move(
+            f"{tmpdirname}/es-europarl.test.conll02", "data/es.europarl.test.tsv"
+        )
+        shutil.move(
+            f"{tmpdirname}/de-europarl.test.conll02", "data/de.europarl.test.tsv"
+        )
+        shutil.move(
+            f"{tmpdirname}/it-europarl.test.conll02", "data/it.europarl.test.tsv"
+        )
 
 
 def get_ote():
@@ -128,5 +137,3 @@ if __name__ == "__main__":
     get_masakhaner2()
     get_europarl()
     get_ote()
-
-
