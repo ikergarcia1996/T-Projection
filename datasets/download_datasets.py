@@ -3,6 +3,26 @@ import os
 import tempfile
 from git import Repo
 import shutil
+from tag_encoding import rewrite_labels
+
+
+def preprocess(input_path, output_path):
+    with open(input_path, "r") as f:
+        with open(output_path, "w") as f2:
+            words, labels = [], []
+            for line in f:
+                line = line.strip()
+                if line:
+                    fields = line.split()
+                    word, label = fields[0], fields[1]
+                    words.append(word)
+                    labels.append(label)
+                else:
+                    labels = rewrite_labels(labels, encoding="iob2")
+                    for word, label in zip(words, labels):
+                        f2.write(f"{word}\t{label}\n")
+                    f2.write("\n")
+                    words, labels = [], []
 
 
 def get_conll():
@@ -23,6 +43,7 @@ def get_conll():
                 tokens = example["tokens"]
                 labels = example["ner_tags"]
                 labels = [id2label[label] for label in labels]
+                labels = rewrite_labels(labels, encoding="iob2")
                 for token, label in zip(tokens, labels):
                     f.write(f"{token}\t{label}\n")
                 f.write("\n")
@@ -65,6 +86,7 @@ def get_masakhaner2():
                     tokens = example["tokens"]
                     labels = example["ner_tags"]
                     labels = [id2label[label] for label in labels]
+                    labels = rewrite_labels(labels, encoding="iob2")
                     # We only want LOC, PER and ORG
                     for i in range(len(labels)):
                         if (
@@ -79,6 +101,43 @@ def get_masakhaner2():
                     f.write("\n")
 
 
+def get_abstrct():
+    print("Getting AbstRCT Corpus")
+
+    with tempfile.TemporaryDirectory() as tmpdirname:
+        # Download the following GitHub repo: https://github.com/ixa-ehu/ner-evaluation-corpus-europarl
+        Repo.clone_from("https://github.com/ragerri/abstrct-projections", tmpdirname)
+        preprocess(
+            f"{tmpdirname}/data/all/EN/argument_components/neoplasm/train.tsv",
+            "data/en.neoplasm.train.tsv",
+        )
+
+        preprocess(
+            f"{tmpdirname}/data/all/EN/argument_components/neoplasm/dev.tsv",
+            "data/en.neoplasm.dev.tsv",
+        )
+
+        preprocess(
+            f"{tmpdirname}/data/all/EN/argument_components/neoplasm/test.tsv",
+            "data/en.neoplasm.test.tsv",
+        )
+
+        preprocess(
+            f"{tmpdirname}/data/all/ES/argument_components/manual_projections/deepl/awesome/train.tsv",
+            "data/es.neoplasm.train.tsv",
+        )
+
+        preprocess(
+            f"{tmpdirname}/data/all/ES/argument_components/manual_projections/deepl/awesome/dev.tsv",
+            "data/es.neoplasm.dev.tsv",
+        )
+
+        preprocess(
+            f"{tmpdirname}/data/all/ES/argument_components/manual_projections/deepl/awesome/neoplasm/test.tsv",
+            "data/es.neoplasm.test.tsv",
+        )
+
+
 def get_europarl():
     print("Getting Europarl-Ner Corpus")
     with tempfile.TemporaryDirectory() as tmpdirname:
@@ -86,16 +145,16 @@ def get_europarl():
         Repo.clone_from(
             "https://github.com/ixa-ehu/ner-evaluation-corpus-europarl", tmpdirname
         )
-        shutil.move(
+        preprocess(
             f"{tmpdirname}/en-europarl.test.conll02", "data/en.europarl.test.tsv"
         )
-        shutil.move(
+        preprocess(
             f"{tmpdirname}/es-europarl.test.conll02", "data/es.europarl.test.tsv"
         )
-        shutil.move(
+        preprocess(
             f"{tmpdirname}/de-europarl.test.conll02", "data/de.europarl.test.tsv"
         )
-        shutil.move(
+        preprocess(
             f"{tmpdirname}/it-europarl.test.conll02", "data/it.europarl.test.tsv"
         )
 
@@ -117,6 +176,7 @@ def get_ote():
                     tokens = example["tokens"]
                     labels = example["ner_tags"]
                     labels = [id2label[label] for label in labels]
+                    labels = rewrite_labels(labels, encoding="iob2")
                     # We only want LOC, PER and ORG
                     for i in range(len(labels)):
                         if (
@@ -137,3 +197,4 @@ if __name__ == "__main__":
     get_masakhaner2()
     get_europarl()
     get_ote()
+    get_abstrct()

@@ -15,6 +15,16 @@ export TOKENIZERS_PARALLELISM=true
 export TOKENIZERS_PARALLELISM=true
 export TRANSFORMERS_NO_ADVISORY_WARNINGS="true"
 
+# This is an example script to run T-Projection on some small test data
+# It is intended to test the correct installation of the required libraries
+# and to check that the code runs without errors
+# It is not intended to be used to reproduce the results of the paper
+# Do not expect to obtain good results with this script
+# The training parameters are not the same as the ones used in the paper
+# If you want to reproduce the results of the paper, please use the scripts
+# in the examples folder
+
+# 1) Train mT5 and generate translation candidates (10 per source entity)
 
 accelerate launch --mixed_precision bf16 seq2seq_t5.py \
   --train_tsv test_data/en.europarl.conll \
@@ -39,6 +49,8 @@ accelerate launch --mixed_precision bf16 seq2seq_t5.py \
   --num_warmup_steps 500 \
   --project_name "T-Projection-europarl"
 
+# 2) Compute translation probabilities for each candidate
+
 python3 calculate_scores_nmts.py \
   --jsonl_path test_data/mt5-large/es.europarl.jsonl \
   --model_name_or_path facebook/m2m100_418M \
@@ -47,6 +59,9 @@ python3 calculate_scores_nmts.py \
   --target_lang es \
   --normalize \
   --both_directions
+
+
+# 3) Label projection
 
 python3 label_projection.py \
   --jsonl_path test_data/mt5-large/es.europarl.jsonl \
