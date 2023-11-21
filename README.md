@@ -144,13 +144,13 @@ accelerate launch --mixed_precision bf16 seq2seq_t5.py \
 - **test_target_tsv**: The target sentences in tsv format (They can all have the O label). For this example, we use the [Europarl Spanish, German and Italian datasets](https://github.com/ixa-ehu/ner-evaluation-corpus-europarl)
 - **num_beams**: The number of beams to use in the beam search. In the paper we generate 100 candidates for each source sentence. As shown in Appendix A (https://arxiv.org/abs/2212.10548), this is excessive, 15-25 candidates is enough.
 - **num_return_sequences**: The number of candidates to return for each source sentence. Must be lower or equal to num_beams.
-- **model_name_or_path**: The name of the pretrained model to use. `google/mt5-xl` gets the best results, but is very slow and requires a lot of VRAM. ´google/mt5-large´ gets competitive results and is faster and requires less VRAM.
+- **model_name_or_path**: The name of the pretrained model to use. `google/mt5-xl` gets the best results, but is very slow and requires a lot of VRAM. `google/mt5-large gets competitive results and is faster and requires less VRAM.
 - **per_device_train_batch_size**: We use 8 in all our experiments. If you do not have enough VRAM, you can set it to 1 and set the `--gradient_accumulation_steps` parameter to 8.
 - **num_train_epochs**: We use 4 for CoNLL03, for smaller datasets you can increase it (We use 10 for the ABSA datasets).
 - **output_dir**: The directory where the model and the predictions will be saved.
 - **project_name**: The name of the wandb project for logging.
 
-You can use multiple GPUs by setting the '--num_processes' parameter:
+You can use multiple GPUs by setting the `--num_processes` parameter:
 
 For more info about accelerate see: https://huggingface.co/docs/accelerate/index
 
