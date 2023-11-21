@@ -41,6 +41,7 @@ accelerate launch --mixed_precision bf16 seq2seq_t5.py \
 --model_name_or_path google/mt5-xl \
 --per_device_train_batch_size 8 \
 --per_device_eval_batch_size 1 \
+--per_device_test_batch_size 1 \
 --gradient_accumulation_steps 1 \
 --learning_rate 1e-4 \
 --num_train_epochs 4 \
