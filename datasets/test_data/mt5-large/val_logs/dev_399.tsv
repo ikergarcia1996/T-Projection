@@ -10,8 +10,8 @@ the O
 session O
 of O
 the O
-European O
-Parliament O
+European B-ORG
+Parliament I-ORG
 adjourned O
 on O
 Friday O
@@ -55,8 +55,8 @@ seen O
 the O
 dreaded O
 ' O
-millennium O
-bug O
+millennium B-MISC
+bug I-MISC
 ' O
 failed O
 to O
@@ -148,8 +148,8 @@ various O
 countries O
 of O
 the O
-European O
-Union O
+European B-ORG
+Union I-ORG
 . O
 
 Please O
@@ -167,7 +167,7 @@ silence O
 
 ( O
 The O
-House O
+House B-ORG
 rose O
 and O
 observed O
@@ -209,8 +209,8 @@ explosions O
 and O
 killings O
 in O
-Sri O
-Lanka O
+Sri B-LOC
+Lanka I-LOC
 . O
 
 One O
@@ -221,19 +221,19 @@ assassinated O
 very O
 recently O
 in O
-Sri O
-Lanka O
+Sri B-LOC
+Lanka I-LOC
 was O
 Mr O
-Kumar O
-Ponnambalam O
+Kumar B-PER
+Ponnambalam I-PER
 , O
 who O
 had O
 visited O
 the O
-European O
-Parliament O
+European B-ORG
+Parliament I-ORG
 just O
 a O
 few O
@@ -257,11 +257,11 @@ a O
 letter O
 to O
 the O
-Sri O
-Lankan O
+Sri B-MISC
+Lankan I-MISC
 President O
 expressing O
-Parliament O
+Parliament B-ORG
 's O
 regret O
 at O
@@ -272,8 +272,8 @@ other O
 violent O
 deaths O
 in O
-Sri O
-Lanka O
+Sri B-LOC
+Lanka I-LOC
 and O
 urging O
 her O
@@ -298,7 +298,7 @@ situation O
 Yes O
 , O
 Mr O
-Evans O
+Evans B-PER
 , O
 I O
 feel O
@@ -327,7 +327,7 @@ shall O
 do O
 as O
 Mr O
-Evans O
+Evans B-PER
 has O
 suggested O
 . O
@@ -419,8 +419,8 @@ first O
 part-session O
 of O
 the O
-European O
-Parliament O
+European B-ORG
+Parliament I-ORG
 , O
 a O
 date O
@@ -434,7 +434,7 @@ next O
 Thursday O
 , O
 in O
-Texas O
+Texas B-LOC
 in O
 America O
 , O
@@ -459,7 +459,7 @@ shall O
 call O
 him O
 Mr O
-Hicks O
+Hicks B-PER
 . O
 
 This O
@@ -481,7 +481,7 @@ Thank O
 you O
 , O
 Mr O
-Segni O
+Segni B-PER
 , O
 I O
 shall O
@@ -501,7 +501,7 @@ with O
 the O
 positions O
 this O
-House O
+House B-ORG
 has O
 always O
 adopted O
@@ -525,7 +525,7 @@ it O
 clear O
 that O
 in O
-Russia O
+Russia B-LOC
 , O
 too O
 , O
@@ -600,8 +600,8 @@ it O
 is O
 wrong O
 for O
-Alexander O
-Nikitin O
+Alexander B-PER
+Nikitin I-PER
 to O
 be O
 accused O
@@ -629,13 +629,13 @@ the O
 basis O
 of O
 the O
-European O
+European B-MISC
 programmes O
 to O
 protect O
 the O
-Barents O
-Sea O
+Barents B-LOC
+Sea I-LOC
 , O
 and O
 that O
@@ -659,7 +659,7 @@ facts O
 and O
 to O
 make O
-Parliament O
+Parliament B-ORG
 's O
 position O
 , O
@@ -677,7 +677,7 @@ clear O
 as O
 far O
 as O
-Russia O
+Russia B-LOC
 is O
 concerned O
 . O
@@ -685,7 +685,7 @@ concerned O
 Yes O
 , O
 Mrs O
-Schroedter O
+Schroedter B-PER
 , O
 I O
 shall O
@@ -771,18 +771,18 @@ there O
 are O
 now O
 two O
-Finnish O
+Finnish B-MISC
 channels O
 and O
 one O
-Portuguese O
+Portuguese B-MISC
 one O
 , O
 there O
 is O
 still O
 no O
-Dutch O
+Dutch B-MISC
 channel O
 , O
 which O
@@ -830,15 +830,15 @@ that O
 we O
 get O
 a O
-Dutch O
+Dutch B-MISC
 channel O
 as O
 well O
 . O
 
 Mrs O
-Plooij-van O
-Gorsel O
+Plooij-van B-PER
+Gorsel I-PER
 , O
 I O
 can O

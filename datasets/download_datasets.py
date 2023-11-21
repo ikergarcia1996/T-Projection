@@ -2,8 +2,8 @@ from datasets import load_dataset
 import os
 import tempfile
 from git import Repo
-import shutil
 from tag_encoding import rewrite_labels
+from concatenate_datasets import concatenate_datasets
 
 
 def preprocess(input_path, output_path):
@@ -33,13 +33,13 @@ def get_conll():
     dataset = load_dataset("conll2003")
     id2label = dict(enumerate(dataset["train"].features["ner_tags"].feature.names))
 
-    for split in ["train", "validation", "test"]:
+    for split in ["train", "dev", "test"]:
         with open(
             f"data/en.conll.{split}.tsv",
             "w",
             encoding="utf8",
         ) as f:
-            for example in dataset[split]:
+            for example in dataset[split if split != "dev" else "validation"]:
                 tokens = example["tokens"]
                 labels = example["ner_tags"]
                 labels = [id2label[label] for label in labels]
@@ -54,7 +54,7 @@ def get_conll():
             "w",
             encoding="utf8",
         ) as f:
-            for example in dataset[split]:
+            for example in dataset[split if split != "dev" else "validation"]:
                 tokens = example["tokens"]
                 labels = example["ner_tags"]
                 # Remove MISC labels
@@ -66,6 +66,26 @@ def get_conll():
                     f.write(f"{token}\t{label}\n")
                 f.write("\n")
 
+    concatenate_datasets(
+        datasets=[
+            "data/en.conll.train.tsv",
+            "data/en.conll.dev.tsv",
+            "data/en.conll.test.tsv",
+        ],
+        output_file="data/en.conll.train.dev.test.tsv",
+        new_line_between_datasets=True,
+    )
+
+    concatenate_datasets(
+        datasets=[
+            "data/en.conll.train.nomisc.tsv",
+            "data/en.conll.dev.nomisc.tsv",
+            "data/en.conll.test.nomisc.tsv",
+        ],
+        output_file="data/en.conll.train.dev.test.nomisc.tsv",
+        new_line_between_datasets=True,
+    )
+
 
 def get_masakhaner2():
     """
@@ -76,13 +96,13 @@ def get_masakhaner2():
         dataset = load_dataset("masakhane/masakhaner2", lang)
         id2label = dict(enumerate(dataset["train"].features["ner_tags"].feature.names))
 
-        for split in ["train", "validation", "test"]:
+        for split in ["train", "dev", "test"]:
             with open(
                 f"data/{lang}.masakhaner2.{split}.tsv",
                 "w",
                 encoding="utf8",
             ) as f:
-                for example in dataset[split]:
+                for example in dataset[split if split != "dev" else "validation"]:
                     tokens = example["tokens"]
                     labels = example["ner_tags"]
                     labels = [id2label[label] for label in labels]
@@ -135,6 +155,16 @@ def get_abstrct():
         preprocess(
             f"{tmpdirname}/data/all/ES/argument_components/manual_projections/deepl/awesome/neoplasm/test.tsv",
             "data/es.neoplasm.test.tsv",
+        )
+
+        concatenate_datasets(
+            datasets=[
+                "data/en.neoplasm.train.tsv",
+                "data/en.neoplasm.dev.tsv",
+                "data/en.neoplasm.test.tsv",
+            ],
+            output_file="data/en.neoplasm.train.dev.test.tsv",
+            new_line_between_datasets=True,
         )
 
 
@@ -190,8 +220,20 @@ def get_ote():
                         f.write(f"{token}\t{label}\n")
                     f.write("\n")
 
+    concatenate_datasets(
+        datasets=[
+            "data/en.ote.train.tsv",
+            "data/en.ote.test.tsv",
+        ],
+        output_file="data/en.ote.train.test.tsv",
+        new_line_between_datasets=True,
+    )
+
 
 if __name__ == "__main__":
+    print(
+        f"We will download the data into the {os.path.join(os.getcwd(),'data')} folder."
+    )
     os.makedirs("data", exist_ok=True)
     get_conll()
     get_masakhaner2()

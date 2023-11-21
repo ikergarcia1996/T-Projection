@@ -148,8 +148,8 @@ various O
 countries O
 of O
 the O
-European O
-Union O
+European B-ORG
+Union I-ORG
 . O
 
 Please O
@@ -221,19 +221,19 @@ assassinated O
 very O
 recently O
 in O
-Sri O
-Lanka O
+Sri B-LOC
+Lanka I-LOC
 was O
 Mr O
-Kumar B-PER
-Ponnambalam I-PER
+Kumar O
+Ponnambalam O
 , O
 who O
 had O
 visited O
 the O
-European B-ORG
-Parliament I-ORG
+European O
+Parliament O
 just O
 a O
 few O
@@ -261,7 +261,7 @@ Sri O
 Lankan O
 President O
 expressing O
-Parliament B-ORG
+Parliament O
 's O
 regret O
 at O
@@ -272,8 +272,8 @@ other O
 violent O
 deaths O
 in O
-Sri B-ORG
-Lanka I-ORG
+Sri O
+Lanka O
 and O
 urging O
 her O
@@ -434,7 +434,7 @@ next O
 Thursday O
 , O
 in O
-Texas B-ORG
+Texas O
 in O
 America O
 , O
@@ -659,7 +659,7 @@ facts O
 and O
 to O
 make O
-Parliament B-ORG
+Parliament O
 's O
 position O
 , O
@@ -677,7 +677,7 @@ clear O
 as O
 far O
 as O
-Russia B-ORG
+Russia O
 is O
 concerned O
 . O

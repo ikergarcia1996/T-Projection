@@ -10,8 +10,8 @@ the O
 session O
 of O
 the O
-European B-ORG
-Parliament I-ORG
+European O
+Parliament O
 adjourned O
 on O
 Friday O
@@ -55,8 +55,8 @@ seen O
 the O
 dreaded O
 ' O
-millennium B-MISC
-bug I-MISC
+millennium O
+bug O
 ' O
 failed O
 to O
@@ -148,8 +148,8 @@ various O
 countries O
 of O
 the O
-European B-ORG
-Union I-ORG
+European O
+Union O
 . O
 
 Please O
@@ -167,7 +167,7 @@ silence O
 
 ( O
 The O
-House B-ORG
+House O
 rose O
 and O
 observed O
@@ -209,8 +209,8 @@ explosions O
 and O
 killings O
 in O
-Sri B-LOC
-Lanka I-LOC
+Sri O
+Lanka O
 . O
 
 One O
@@ -225,8 +225,8 @@ Sri B-LOC
 Lanka I-LOC
 was O
 Mr O
-Kumar O
-Ponnambalam O
+Kumar B-PER
+Ponnambalam I-PER
 , O
 who O
 had O
@@ -257,11 +257,11 @@ a O
 letter O
 to O
 the O
-Sri B-MISC
-Lankan I-MISC
+Sri B-ORG
+Lankan I-ORG
 President O
 expressing O
-Parliament B-ORG
+Parliament O
 's O
 regret O
 at O
@@ -298,7 +298,7 @@ situation O
 Yes O
 , O
 Mr O
-Evans B-PER
+Evans O
 , O
 I O
 feel O
@@ -327,7 +327,7 @@ shall O
 do O
 as O
 Mr O
-Evans B-PER
+Evans O
 has O
 suggested O
 . O
@@ -419,8 +419,8 @@ first O
 part-session O
 of O
 the O
-European B-ORG
-Parliament I-ORG
+European O
+Parliament O
 , O
 a O
 date O
@@ -481,7 +481,7 @@ Thank O
 you O
 , O
 Mr O
-Segni B-PER
+Segni O
 , O
 I O
 shall O
@@ -501,7 +501,7 @@ with O
 the O
 positions O
 this O
-House B-ORG
+House O
 has O
 always O
 adopted O
@@ -525,7 +525,7 @@ it O
 clear O
 that O
 in O
-Russia B-LOC
+Russia O
 , O
 too O
 , O
@@ -600,8 +600,8 @@ it O
 is O
 wrong O
 for O
-Alexander B-PER
-Nikitin I-PER
+Alexander O
+Nikitin B-PER
 to O
 be O
 accused O
@@ -629,7 +629,7 @@ the O
 basis O
 of O
 the O
-European B-MISC
+European O
 programmes O
 to O
 protect O
@@ -659,7 +659,7 @@ facts O
 and O
 to O
 make O
-Parliament B-ORG
+Parliament O
 's O
 position O
 , O
@@ -685,7 +685,7 @@ concerned O
 Yes O
 , O
 Mrs O
-Schroedter B-PER
+Schroedter O
 , O
 I O
 shall O
@@ -771,7 +771,7 @@ there O
 are O
 now O
 two O
-Finnish B-MISC
+Finnish O
 channels O
 and O
 one O
@@ -830,15 +830,15 @@ that O
 we O
 get O
 a O
-Dutch B-MISC
+Dutch O
 channel O
 as O
 well O
 . O
 
 Mrs O
-Plooij-van B-PER
-Gorsel I-PER
+Plooij-van O
+Gorsel O
 , O
 I O
 can O

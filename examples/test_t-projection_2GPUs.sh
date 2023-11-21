@@ -1,21 +1,3 @@
-#!/bin/bash
-#SBATCH --job-name=test_t-projection
-#SBATCH --cpus-per-task=24
-#SBATCH --gres=gpu:2
-#SBATCH --mem=64G
-#SBATCH --output=test_t-projection.out.txt
-#SBATCH --error=test_t-projection.err.txt
-
-source /ikerlariak/igarcia945/envs/pytorch2/bin/activate
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export TOKENIZERS_PARALLELISM=true
-export TOKENIZERS_PARALLELISM=true
-export TRANSFORMERS_NO_ADVISORY_WARNINGS="true"
-
-
 # This is an example script to run T-Projection on some small test data
 # It is intended to test the correct installation of the required libraries
 # and to check that the code runs without errors
@@ -25,7 +7,7 @@ export TRANSFORMERS_NO_ADVISORY_WARNINGS="true"
 # If you want to reproduce the results of the paper, please use the scripts
 # in the examples folder
 
-# 1) Train mT5 and generate translation candidates (10 per source entity)
+# 1) Train mT5 and generate projection candidates (10 per source entity)
 
 accelerate launch --num_processes 2 --mixed_precision  bf16 seq2seq_t5.py \
   --train_tsv datasets/test_data/en.europarl.conll \

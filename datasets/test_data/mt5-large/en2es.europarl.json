@@ -1,0 +1,55 @@
+{
+    "#@!@#_model_name": "facebook/m2m100_418M",
+    "European Parliament": {
+        "Parlamento Europeo": 1.0020855406263913,
+        "Parlamento": 0.3697920703589659
+    },
+    "millennium bug": {},
+    "European Union": {},
+    "House": {},
+    "Sri Lanka": {
+        "Sri Lanka": 0.9318391769102989
+    },
+    "Kumar Ponnambalam": {
+        "Kumar Ponnambalam": 0.9737232698565519
+    },
+    "Sri Lankan": {
+        "Sri Lanka": 0.6503685420753397
+    },
+    "Parliament": {},
+    "Evans": {
+        "Evans": 0.999613919936289
+    },
+    "Texas": {
+        "Texas": 1.0526633430874446
+    },
+    "America": {
+        "Texas": 0.13463133528857912
+    },
+    "Hicks": {
+        "Hicks": 0.9951248556812404
+    },
+    "Segni": {
+        "Segni": 0.9453314421583917
+    },
+    "Russia": {
+        "Rusia": 0.9804992789914933
+    },
+    "Alexander Nikitin": {
+        "Alexander Nikitin": 0.9340592049429257
+    },
+    "European": {},
+    "Barents Sea": {},
+    "Schroedter": {
+        "Schroedter": 0.9611397310523082
+    },
+    "Finnish": {},
+    "Portuguese": {},
+    "Dutch": {
+        "neerlandés": 0.6997630794984873,
+        "Neerlandés": 0.5899108534659196
+    },
+    "Plooijvan Gorsel": {
+        "Plooijvan Gorsel": 0.925312347098115
+    }
+}

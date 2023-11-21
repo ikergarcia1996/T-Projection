@@ -140,3 +140,5 @@ datasets/test_data/mt5-large/spiece.model
 datasets/test_data/mt5-large/tokenizer_config.json
 datasets/test_data/mt5-large/tokenizer.json
 wandb/
+
+slurm/
